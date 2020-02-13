@@ -1,0 +1,22 @@
+<% @todos.each_slice(3) do |todos|%>
+<div class='row'>
+  <% todos.each do |todo| %>
+    <% if todo.completed? %>
+  <div class="card" style="width: 18rem;">
+    <%= image_tag  todo.task.image, class: "card-img-top" %>
+    <div class="card-body">
+    <h5 class="card-title"><%= todo.task.name %></h5>
+    <%= link_to  "Descompletar", update_todo_path(todo), method: :patch  %>
+    <% else %>
+    <div class="card" style="width: 18rem;">
+    <%= image_tag  todo.task.image, class: "card-img-top", style:'filter:grayscale(100%)' %>
+    <div class="card-body">
+    <h5 class="card-title"><%= todo.task.name %></h5>
+    <%= link_to  "Completar", update_todo_path(todo), method: :patch  %>
+    <% end %>
+    <%= link_to  "Detalle", show_todo_path(todo) %>
+  </div>
+</div>
+    <% end %>
+    </div>
+<% end %>

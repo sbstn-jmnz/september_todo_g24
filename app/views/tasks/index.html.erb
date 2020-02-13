@@ -1,0 +1,13 @@
+<% @tasks.each_slice(3) do |tasks|%>
+<div class='row'>
+<% tasks.each do |task| %>
+<div class="card" style="width: 18rem;">
+<%= image_tag  task.image, class: "card-img-top", style:'filter:grayscale(100%)' %>
+  <div class="card-body">
+    <h5 class="card-title"><%= task.name %></h5>
+    <%= link_to  "Completar", todos_path  %>
+  </div>
+</div>
+    <% end %>
+    </div>
+<% end %>
